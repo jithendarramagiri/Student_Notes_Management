@@ -1,0 +1,114 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+SNS - Dashboard
+{% endblock %}
+
+{% block navmenu %}
+
+    <a href="/dashboard" class="active">Dashboard</a>
+    <a href="/dashboard/notes">My Notes</a>
+    <a href="#">My Files</a>
+    <a href="/logout" class="logout-link">Logout</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="dashboard-welcome">
+
+        <div>
+
+            <span class="dashboard-label">
+                PERSONAL WORKSPACE
+            </span>
+
+            <h1>Welcome to Your Dashboard 👋</h1>
+
+            <p>
+                Manage your notes and important files
+                from one convenient place.
+            </p>
+
+        </div>
+
+        <div class="dashboard-welcome-icon">
+            ✨
+        </div>
+
+    </div>
+
+
+    <div class="section-heading dashboard-heading">
+
+        <span>YOUR WORKSPACE</span>
+
+        <h2>Manage Your Resources</h2>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-top">
+
+                <div class="feature-icon purple-icon">
+                    📝
+                </div>
+
+                <span class="card-number">01</span>
+
+            </div>
+
+            <h3>Notes Management</h3>
+
+            <p>
+                Create, organize, update and manage
+                your personal study notes.
+            </p>
+
+            <a href="/dashboard/notes" class="dashboard-link">
+                Explore Notes →
+            </a>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-card-top">
+
+                <div class="feature-icon blue-icon">
+                    📁
+                </div>
+
+                <span class="card-number">02</span>
+
+            </div>
+
+            <h3>File Management</h3>
+
+            <p>
+                Upload, view, download and organize
+                your important academic files.
+            </p>
+
+            <a href="#" class="dashboard-link">
+                Explore Files →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

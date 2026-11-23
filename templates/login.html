@@ -1,0 +1,92 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+SNS - Login
+{% endblock %}
+
+{% block navmenu %}
+
+    <a href="/">Home</a>
+    <a href="/login" class="active">Login</a>
+    <a href="/register" class="nav-register">Register</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card login-card">
+
+        <div class="auth-icon">↗</div>
+
+        <div class="auth-heading">
+
+            <h2>Welcome Back!</h2>
+
+            <p>
+                Login to continue managing your notes and files.
+            </p>
+
+        </div>
+
+
+        <form action="/login" method="POST">
+
+            <div class="form-group">
+
+                <label for="email">Email Address</label>
+
+                <input type="email"
+                       name="email"
+                       id="email"
+                       class="form-control"
+                       placeholder="Enter your email"
+                       required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">Password</label>
+
+                <input type="password"
+                       name="password"
+                       id="password"
+                       class="form-control"
+                       placeholder="Enter your password"
+                       required>
+
+            </div>
+
+
+            <div class="forgot-password">
+
+                <a href="#">Forgot Password?</a>
+
+            </div>
+
+
+            <button type="submit" class="btn-submit">
+                Login to Account →
+            </button>
+
+        </form>
+
+
+        <div class="auth-bottom">
+
+            Don't have an account?
+
+            <a href="/register">Create Account</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

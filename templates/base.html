@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}SNS Management{% endblock %}
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Common CSS for all HTML pages -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="brand">
+                <span class="brand-logo">S</span>
+                <span>SNS<span class="brand-dot">.</span></span>
+            </a>
+
+            <nav class="nav-links">
+
+                {% block navmenu %}
+                {% endblock %}
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- FLASH MESSAGES -->
+    <main class="main-container">
+
+        {% with messages = get_flashed_messages() %}
+
+            {% for message in messages %}
+
+                <div class="flash-message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endwith %}
+
+
+        <!-- PAGE CONTENT -->
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                SNS<span>.</span>
+            </div>
+
+            <p class="footer-description">
+                Your personal space to organize notes
+                and manage learning resources.
+            </p>
+
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+
+            <div class="footer-line"></div>
+
+            <p class="copyright">
+                © 2026 SNS Management System.
+                Developed by Jithendar Ramagiri.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+ SNS-Notes
+{% endblock %}
+
+{% block navmenu %}
+<div>
+    <a href="/dashboard">Dashboard</a>
+    <a href="">Files</a>
+    <a href="/dashboard/notes">Notes</a>
+    <a href="/logout">Logout</a>
+</div>
+    
+{% endblock %}
+
+
+{% block content %}
+    <div style="text-align: center;">
+        <div>
+            <h2>View Notes</h2>
+        </div>    
+        <div>
+            <div>
+                Here you can view your new notes
+            </div>  
+
+            <div>
+                <div>
+                    <strong>Title:</strong> {{ title }}
+                </div>
+                <div>
+                    <strong>Content:</strong> {{ content }}
+                </div>
+            </div>
+        </div>
+{% endblock %}

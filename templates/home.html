@@ -1,0 +1,185 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+SNS - Home
+{% endblock %}
+
+{% block navmenu %}
+
+    <a href="/" class="active">Home</a>
+    <a href="/login">Login</a>
+    <a href="/register" class="nav-register">Get Started</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="home-container">
+
+    <!-- HERO SECTION -->
+
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                YOUR PERSONAL LEARNING SPACE
+            </span>
+
+            <h1>
+                Organize Your Ideas.
+                <span>Manage Your Knowledge.</span>
+            </h1>
+
+            <p>
+                Keep your study notes and important files
+                organized in one place. A simple and smart
+                workspace designed for students.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/register" class="btn-primary">
+                    Get Started →
+                </a>
+
+                <a href="/login" class="btn-outline">
+                    Login to Account
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="visual-card">
+
+                <div class="visual-top">
+                    <span>My Workspace</span>
+                    <span class="online-dot">●</span>
+                </div>
+
+                <div class="visual-note">
+                    <span>📝</span>
+                    <div>
+                        <strong>Study Notes</strong>
+                        <small>Organize your learning</small>
+                    </div>
+                </div>
+
+                <div class="visual-note">
+                    <span>📁</span>
+                    <div>
+                        <strong>My Documents</strong>
+                        <small>Keep files together</small>
+                    </div>
+                </div>
+
+                <div class="visual-note">
+                    <span>⭐</span>
+                    <div>
+                        <strong>Important Resources</strong>
+                        <small>Your saved materials</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+
+    <section class="features-section">
+
+        <div class="section-heading">
+
+            <span>WHAT YOU CAN DO</span>
+
+            <h2>Everything You Need in One Place</h2>
+
+            <p>
+                Make your learning organized, productive
+                and easy to manage.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple-icon">
+                    📝
+                </div>
+
+                <h3>Notes Management</h3>
+
+                <p>
+                    Create, view, update and delete
+                    your personal study notes.
+                </p>
+
+                <ul>
+                    <li>Create New Notes</li>
+                    <li>View Your Notes</li>
+                    <li>Update Notes</li>
+                    <li>Delete Notes</li>
+                </ul>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    📁
+                </div>
+
+                <h3>File Management</h3>
+
+                <p>
+                    Keep your important academic
+                    documents safe and organized.
+                </p>
+
+                <ul>
+                    <li>Upload Files</li>
+                    <li>View Documents</li>
+                    <li>Download Files</li>
+                    <li>Manage Files</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA SECTION -->
+
+    <section class="cta-section">
+
+        <h2>Ready to Organize Your Learning?</h2>
+
+        <p>
+            Create your account and start managing
+            your notes and files today.
+        </p>
+
+        <a href="/register" class="btn-primary">
+            Create Free Account →
+        </a>
+
+    </section>
+
+</div>
+
+{% endblock %}
