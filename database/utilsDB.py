@@ -1,5 +1,4 @@
 from database.connection import DatabaseConnection
-
 class AuthenticationQueries:
     @staticmethod
     def getUserData(email:str):
@@ -13,7 +12,7 @@ class AuthenticationQueries:
             return user 
         except Exception as e:
             return f"Something wrong in \
-                        database.utilsDB.AuthenticationQueries.getUserData():{e}"
+                        database.utilsDB.AuthneticationQueries.getUserData():{e}"
         finally:
             if cursor: 
                 cursor.close()
@@ -34,13 +33,12 @@ class AuthenticationQueries:
             return "Successfully account created" 
         except Exception as e:
             return f"Something wrong in \
-                        database.utilsDB.AuthenticationQueries.createUserAccount():{e}"
+                        database.utilsDB.AuthneticationQueries.createUserAccount():{e}"
         finally:
             if cursor: 
                 cursor.close()
             if db_config: 
                 db_config.close()
-
 
 
 
@@ -66,13 +64,19 @@ class NotesQueries:
 
     # get the user notes
     @staticmethod
-    def getNotesByUserId(userid:int):
+    def getNotesByUserId(userid:int, title:str=None):
         db_config = cursor = None
         try:
             db_config = DatabaseConnection()
             cursor = db_config.cursor(dictionary=True)
             query = """select * from notes where userid = %s"""
-            cursor.execute(query,(userid, ))
+            values = [userid]
+            if title:
+                query += " and title like %s"
+                values.append(f"%{title}%")
+
+            query += " order by updated_at desc"
+            cursor.execute(query,values)
             data = cursor.fetchall()
             return data
         except Exception as e:
@@ -104,6 +108,52 @@ class NotesQueries:
                 cursor.close()
             if db_config: 
                 db_config.close()
+
+
+    # Update notes by notes id 
+    @staticmethod
+    def updateNotes(userid:int, notesid:int, title:str, content:str):
+        db_config = cursor = None
+        try:
+            db_config = DatabaseConnection()
+            cursor = db_config.cursor(dictionary=True)
+            query = """update notes set title = %s, content = %s 
+                        where notesid = %s and userid =%s"""
+            cursor.execute(query,(title, content, notesid, userid))
+            db_config.commit()
+            return "Notes Updated"
+        except Exception as e:
+            return f"Something wrong in \
+                        database.utilsDB.NotesQueries.updateNotes():{e}"
+        finally:
+            if cursor: 
+                cursor.close()
+            if db_config: 
+                db_config.close()
+
+
+    # Delete notes by notes id 
+    @staticmethod
+    def deleteNotes(userid:int, notesid:int):
+        db_config = cursor = None
+        try:
+            db_config = DatabaseConnection()
+            cursor = db_config.cursor(dictionary=True)
+            query = """delete from notes where notesid = %s and userid =%s"""
+            cursor.execute(query,(notesid, userid))
+            db_config.commit()
+            if cursor.rowcount == 0:
+                return "Notes id not found"
+            return "Notes deleted succefully"
+        except Exception as e:
+            return f"Something wrong in \
+                        database.utilsDB.NotesQueries.deleteNotes():{e}"
+        finally:
+            if cursor: 
+                cursor.close()
+            if db_config: 
+                db_config.close()
+
 
 
 

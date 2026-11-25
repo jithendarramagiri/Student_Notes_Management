@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 
-
 from database import createTables, AuthenticationQueries, NotesQueries
 from utils import sendEmail, generateOTP, generateHashPassword, verifyHashPassword
 
@@ -119,7 +118,6 @@ def verify_otp():
 
 
 
-
 @app.route('/dashboard')
 def dashboard():
     if request.method == 'GET':
@@ -128,8 +126,9 @@ def dashboard():
 @app.route('/dashboard/notes')
 def mynotes():
     # get user note from databse
-    all_notes = NotesQueries.getNotesByUserId(userid=session['id'])
-    return render_template('/notes.html', notes = all_notes)
+    search_title = request.args.get('search')
+    all_notes = NotesQueries.getNotesByUserId(userid=session['id'], title = search_title)
+    return render_template('/notes.html', notes = all_notes or {})
 
 @app.route('/dashboard/notes/add-notes', methods = ['GET','POST'])
 def addnotes():
@@ -166,23 +165,28 @@ def update_notes(notesid):
         title = request.form.get('title')
         content = request.form.get('content')
         # update notes content with notes id
+        msg = NotesQueries.updateNotes(userid=session['id'], 
+                                       notesid=notesid,
+                                       title=title,
+                                       content=content)
+        flash(msg)
+        return redirect(url_for('mynotes'))
 
 
         
 
-
 # delete notes
 @app.route('/dashboard/notes/delete/<int:notesid>')
 def delete_notes(notesid):
-    pass
-
+    msg= NotesQueries.deleteNotes(userid=session['id'], notesid=notesid)
+    flash(msg)
+    return redirect(url_for('mynotes'))
 
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect('/login')
-
 
 
 
